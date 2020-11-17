@@ -1,16 +1,16 @@
 use employee_DB;
 
--- DEPARTMENT SEEDS -----
-INSERT INTO department (name)
+-- Departments-----
+INSERT INTO departments (name)
 VALUE ("HR");
-INSERT INTO department (name)
+INSERT INTO departments (name)
 VALUE ("Purchasing");
-INSERT INTO department (name)
+INSERT INTO departments (name)
 VALUE ("Engineering");
-INSERT INTO department (name)
+INSERT INTO departments (name)
 VALUE ("Legal");
 
--- EMPLOYEE ROLE SEEDS -------
+-- Role-------
 INSERT INTO role (title, salary, department_id)
 VALUE ("HR Director", 100000, 1);
 INSERT INTO role (title, salary, department_id)
@@ -28,7 +28,7 @@ VALUE ("Legal Team Lead", 150000, 4);
 INSERT INTO role (title, salary, department_id)
 VALUE ("Lawyer", 120000, 4);
 
--- EMPLOYEE SEEDS -------
+-- Employee -------
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
 VALUE ("John", "Smith", null, 1);
 INSERT INTO employee (first_name, last_name, manager_id, role_id)
