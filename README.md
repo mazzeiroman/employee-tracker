@@ -3,7 +3,7 @@ A solution for managing a company's employees using node, inquirer, and MySQL.
 
 ![License](https://img.shields.io/badge/License-MIT-blue.svg "License Badge")
 ## Table of Content: 
-#### (Link to Github Repo) [https://github.com/mazzeiroman/README-GENERATOR]
+#### (Link to Github Repo) [https://github.com/mazzeiroman/employee-tracker]
 - [Description](#description)
 - [Installation](#installation)
 - [Usage](#usage)

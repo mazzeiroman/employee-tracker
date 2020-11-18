@@ -38,6 +38,7 @@ connection.connect(function(err) {
         "Add a role",
         "Add an employee",
         "Update employee roles",
+        "Delete Employee",
         "Exit"
         ]
       })
@@ -63,6 +64,9 @@ connection.connect(function(err) {
         }
         else if(answer.addViewUpdate === "Update employee roles") {
           updateEmployeeRoles();
+        }
+        else if(answer.addViewUpdate === "Delete Employee") {
+          deleteEmployee();
         } else{
           connection.end();
         }
@@ -205,7 +209,7 @@ connection.connect(function(err) {
         {
           name: "employee_id",
           type: "input",
-          message: "What is the ID number of the employee?"
+          message: "What is the ID role number of the employee?"
         }, 
         {
           name: "employee_new_role",
@@ -233,3 +237,25 @@ connection.connect(function(err) {
       
 }
 
+function deleteEmployee() {
+    inquirer
+      .prompt([
+        {
+          name: "employee_id",
+          type: "input",
+          message: "What is the ID  of the employee?"
+        }])
+      .then(function(answer) {
+        connection.query(
+            "DELETE FROM employee WHERE ?",
+            {
+              id: answer.employee_id
+            },
+          function(err) {
+            if (err) throw err;
+            // console.log("employee deleted successfully!");
+            start();
+          }
+        );
+      });
+}
