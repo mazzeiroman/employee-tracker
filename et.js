@@ -199,5 +199,36 @@ connection.connect(function(err) {
   }
 
   function updateEmployeeRoles() {
+    inquirer
+      .prompt([
+        {
+          name: "employee_id",
+          type: "input",
+          message: "What is the ID number of the employee?"
+        }, 
+        {
+          name: "employee_new_role",
+          type: "input",
+          message: "What is the new role of the employee?"
+          }])
+      .then(function(answer) {
+        connection.query(
+          "UPDATE employee SET ? WHERE ?",
+          [
+            {
+              role_id: answer.employee_new_role
+            },
+            {
+              role_id: answer.employee_id
+            }
+          ],
+          function(err) {
+            if (err) throw err;
+            // console.log("employee added successfully!");
+            start();
+          }
+        );
+      });
       
-  }
+}
+
