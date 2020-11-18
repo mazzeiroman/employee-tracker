@@ -1,8 +1,6 @@
 # employee-tracker
 A solution for managing a company's employees using node, inquirer, and MySQL.
 
-# README-GENERATOR
-
 ![License](https://img.shields.io/badge/License-MIT-blue.svg "License Badge")
 ## Table of Content: 
 #### (Link to Github Repo) [https://github.com/mazzeiroman/README-GENERATOR]
@@ -20,7 +18,7 @@ A solution for managing a company's employees using node, inquirer, and MySQL.
 https://github.com/mazzeiroman/employee-tracker
 
 ## Link to the Deployed Application
-
+https://drive.google.com/file/d/1KUuQIrWXG5VOb6ojj2jK6YCjk3Lc_p00/view
 
 ## Description
  This application was created using node.JS and MySQL allows the user to generate, view and manage the departments, roles, and employees in a company.

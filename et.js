@@ -199,6 +199,7 @@ connection.connect(function(err) {
   }
 
   function updateEmployeeRoles() {
+   
     inquirer
       .prompt([
         {
