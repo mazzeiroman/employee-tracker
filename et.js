@@ -42,7 +42,7 @@ connection.connect(function(err) {
         ]
       })
       .then(function(answer) {
-        // based on their answer, either call the bid or the post functions
+    
         if (answer.addViewUpdate === "View departments") {
           viewDepartments();
         }
@@ -224,7 +224,7 @@ connection.connect(function(err) {
           ],
           function(err) {
             if (err) throw err;
-            // console.log("employee added successfully!");
+            // console.log("employee role updated successfully!");
             start();
           }
         );
