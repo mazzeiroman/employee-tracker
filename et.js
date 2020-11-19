@@ -42,6 +42,7 @@ connection.connect(function(err) {
         "Delete Role",
         "Delete Department",
         "View Employee by Manager",
+        "Update Employee's Manager",
         "Exit"
         ]
       })
@@ -79,7 +80,10 @@ connection.connect(function(err) {
         }
         else if(answer.addViewUpdate === "View Employee by Manager") {
           viewEmployeeByManager();
-        } else{
+        }
+        else if(answer.addViewUpdate === "Update Employee's Manager") {
+          updateEmployeeManager();
+        }  else{
           connection.end();
         }
       });
@@ -340,4 +344,39 @@ function viewEmployeeByManager() {
           }
         );
       });
+}
+
+function updateEmployeeManager() {
+   
+    inquirer
+      .prompt([
+        {
+          name: "employee_id",
+          type: "input",
+          message: "What is the ID of the employee?"
+        }, 
+        {
+          name: "employee_new_manager",
+          type: "input",
+          message: "What is the ID of the new manager for that employee?"
+          }])
+      .then(function(answer) {
+        connection.query(
+          "UPDATE employee SET ? WHERE ?",
+          [
+            {
+              manager_id: answer.employee_new_manager
+            },
+            {
+              id: answer.employee_id
+            }
+          ],
+          function(err) {
+            if (err) throw err;
+            // console.log("employee role updated successfully!");
+            start();
+          }
+        );
+      });
+      
 }
