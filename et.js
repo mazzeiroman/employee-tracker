@@ -39,6 +39,8 @@ connection.connect(function(err) {
         "Add an employee",
         "Update employee roles",
         "Delete Employee",
+        "Delete Role",
+        "Delete Department",
         "Exit"
         ]
       })
@@ -67,6 +69,9 @@ connection.connect(function(err) {
         }
         else if(answer.addViewUpdate === "Delete Employee") {
           deleteEmployee();
+        }
+        else if(answer.addViewUpdate === "Delete Role") {
+          deleteRole();
         } else{
           connection.end();
         }
@@ -254,6 +259,29 @@ function deleteEmployee() {
           function(err) {
             if (err) throw err;
             // console.log("employee deleted successfully!");
+            start();
+          }
+        );
+      });
+}
+
+function deleteRole() {
+    inquirer
+      .prompt([
+        {
+          name: "id",
+          type: "input",
+          message: "What is the ID of the role you want to delete?"
+        }])
+      .then(function(answer) {
+        connection.query(
+            "DELETE FROM role WHERE ?",
+            {
+              id: answer.id
+            },
+          function(err) {
+            if (err) throw err;
+            // console.log("role deleted successfully!");
             start();
           }
         );
