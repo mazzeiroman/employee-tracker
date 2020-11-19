@@ -41,6 +41,7 @@ connection.connect(function(err) {
         "Delete Employee",
         "Delete Role",
         "Delete Department",
+        "View Employee by Manager",
         "Exit"
         ]
       })
@@ -72,6 +73,12 @@ connection.connect(function(err) {
         }
         else if(answer.addViewUpdate === "Delete Role") {
           deleteRole();
+        } 
+        else if(answer.addViewUpdate === "Delete Department") {
+          deleteDepartment();
+        }
+        else if(answer.addViewUpdate === "View Employee by Manager") {
+          viewEmployeeByManager();
         } else{
           connection.end();
         }
@@ -282,6 +289,53 @@ function deleteRole() {
           function(err) {
             if (err) throw err;
             // console.log("role deleted successfully!");
+            start();
+          }
+        );
+      });
+}
+
+function deleteDepartment() {
+    inquirer
+      .prompt([
+        {
+          name: "id",
+          type: "input",
+          message: "What is the ID of the Department you want to delete?"
+        }])
+      .then(function(answer) {
+        connection.query(
+            "DELETE FROM departments WHERE ?",
+            {
+              id: answer.id
+            },
+          function(err) {
+            if (err) throw err;
+            // console.log("role deleted successfully!");
+            start();
+          }
+        );
+      });
+}
+
+function viewEmployeeByManager() {
+    inquirer
+      .prompt([
+        {
+          name: "role_id",
+          type: "input",
+          message: "What is the ID of the Manager?"
+        }])
+      .then(function(answer) {
+        connection.query(
+            "SELECT * FROM employee WHERE ?",
+            {
+            manager_id: answer.role_id
+            },
+          function(err, res) {
+            if (err) throw err;
+            console.log("\n View Employee \n");
+            console.table(res)
             start();
           }
         );
